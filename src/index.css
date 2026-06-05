@@ -1,0 +1,309 @@
+:root {
+  --bg-main: #121212;
+  --bg-secondary: #1B1425;
+  --accent-violet: #A855F7;
+  --highlight-teal: #2DD4BF;
+  --text-light: #F8FAFC;
+  --text-muted: #94A3B8;
+  --glass-bg: rgba(27, 20, 37, 0.5);
+  --glass-border: rgba(168, 85, 247, 0.15);
+  --glass-glow: rgba(45, 212, 191, 0.08);
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-code: 'Fira Code', monospace;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-light);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary);
+  border: 2px solid var(--bg-main);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-violet);
+}
+
+/* Base Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.05) 0%, rgba(45, 212, 191, 0.05) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(45, 212, 191, 0.3);
+  box-shadow: 0 15px 35px rgba(168, 85, 247, 0.15);
+}
+
+/* Text Gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #F8FAFC 30%, var(--accent-violet) 70%, var(--highlight-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-neon {
+  background: linear-gradient(135deg, var(--accent-violet) 0%, var(--highlight-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-teal {
+  color: var(--highlight-teal);
+  text-shadow: 0 0 10px rgba(45, 212, 191, 0.2);
+}
+
+/* Button Styling */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-violet) 0%, #8B5CF6 100%);
+  color: var(--text-light);
+  border: none;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6), 0 0 15px rgba(45, 212, 191, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(5px);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(168, 85, 247, 0.1);
+  border-color: var(--accent-violet);
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--highlight-teal);
+  border: 1px solid var(--highlight-teal);
+}
+
+.btn-outline:hover {
+  transform: translateY(-2px);
+  background: rgba(45, 212, 191, 0.1);
+  box-shadow: 0 4px 15px rgba(45, 212, 191, 0.3);
+}
+
+/* Sections General */
+section {
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.section-title span {
+  display: block;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--highlight-teal);
+  margin-bottom: 8px;
+}
+
+/* Grid helper */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Floating Blobs Background */
+.blob-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.floating-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.2;
+  mix-blend-mode: screen;
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+/* Navigation helper classes */
+.active-nav-link {
+  color: var(--highlight-teal) !important;
+  text-shadow: 0 0 10px rgba(45, 212, 191, 0.4);
+}
+
+.active-nav-link::after {
+  width: 100% !important;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-control {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(18, 18, 18, 0.7);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--highlight-teal);
+  box-shadow: 0 0 15px rgba(45, 212, 191, 0.2);
+  background: rgba(18, 18, 18, 0.95);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 70px 0;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
